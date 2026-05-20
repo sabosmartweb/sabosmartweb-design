@@ -1,5 +1,6 @@
-
-  const style = document.createElement('style');
+document.addEventListener("DOMContentLoaded", function() {
+    
+    const style = document.createElement('style');
   style.innerHTML = `
     .products-feed__product-media {
       background: white !important;
@@ -30,4 +31,7 @@
     }
   `;
   document.head.appendChild(style);
+    
+});
+  
 
