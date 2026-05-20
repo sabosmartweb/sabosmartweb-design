@@ -1,19 +1,5 @@
-
-// icono header ayuda
-(function () {
-  const style = document.createElement("style");
-
-  style.innerHTML = `
-    a[href="#contact-modal"] {
-      display: none !important;
+document.querySelectorAll('a').forEach(el => {
+    if (el.textContent.trim() === 'Contacto') {
+        el.closest('li').style.display = 'none';
     }
-
-    a[href="#contact-modal"] {
-      visibility: hidden !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-  `;
-
-  document.head.appendChild(style);
-})();
+});
