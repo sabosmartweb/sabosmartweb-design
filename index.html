@@ -561,3 +561,247 @@ a.block-categories-carrousel__link::after {
   display: none !important;
 }
 </style>
+
+
+
+
+
+<style>
+footer.footer.sabo-footer,
+footer.footer.sabo-footer * {
+  box-sizing: border-box;
+}
+
+footer.footer.sabo-footer {
+  background: #3D332B !important;
+  padding: 0 !important;
+}
+
+.sabo-footer .footer__top {
+  background: transparent !important;
+  padding: 44px 20px !important;
+}
+
+.sabo-footer .footer__container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Distribución */
+.sabo-footer .footer__top__items {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sabo-footer .footer__top__item {
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+/* Marca */
+.sabo-footer .sabo-footer-marca {
+  margin: 0 0 8px !important;
+  color: #FBF9F4 !important;
+  font: 700 36px/1.2 Georgia, serif !important;
+  letter-spacing: 6px;
+}
+
+.sabo-footer .sabo-footer-rubro {
+  margin: 0 0 22px !important;
+  color: #CFC4B8 !important;
+  font: 400 13px/1.5 Arial, sans-serif !important;
+  letter-spacing: 4px;
+}
+
+.sabo-footer .sabo-footer-descripcion {
+  max-width: 390px;
+  margin: 0 !important;
+  color: #CFC4B8 !important;
+  font: 400 16px/1.7 Arial, sans-serif !important;
+}
+
+/* Títulos de columnas */
+.sabo-footer .footer__top__title {
+  margin: 0 0 18px !important;
+  color: #FBF9F4 !important;
+  font: 700 17px/1.3 Arial, sans-serif !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+}
+
+/* Listas */
+.sabo-footer .sabo-footer-categorias,
+.sabo-footer .footer__top__info-list {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.sabo-footer .sabo-footer-categorias li,
+.sabo-footer .footer__top__info-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #CFC4B8 !important;
+  font: 400 16px/1.6 Arial, sans-serif !important;
+}
+
+/* Enlaces */
+.sabo-footer .footer__top a {
+  color: #CFC4B8 !important;
+  -webkit-text-fill-color: #CFC4B8 !important;
+  text-decoration: none !important;
+  overflow-wrap: anywhere;
+}
+
+.sabo-footer .footer__top a:hover {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-decoration: underline !important;
+}
+
+.sabo-footer .footer__top a:focus-visible {
+  outline: 2px solid #FBF9F4;
+  outline-offset: 4px;
+}
+
+/* Arrepentimiento */
+.sabo-footer .footer__top__info-item--underline {
+  margin-top: 10px !important;
+  font-size: 13px !important;
+}
+
+.sabo-footer .footer__top__info-item--underline a {
+  text-decoration: underline !important;
+}
+
+/* Ocultar columnas reemplazadas y crédito inferior */
+.sabo-footer .sabo-footer-oculto,
+.sabo-footer .footer__bottom {
+  display: none !important;
+}
+
+/* Computadora */
+@media (min-width: 900px) {
+  .sabo-footer .footer__top {
+    padding: 56px 32px !important;
+  }
+
+  .sabo-footer .footer__top__items {
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+    gap: 60px !important;
+  }
+}
+</style>
+
+<script>
+(function () {
+  function prepararFooter() {
+    const footer = document.querySelector("footer.footer");
+    if (!footer || footer.classList.contains("sabo-footer")) return;
+
+    const columnas = footer.querySelector(".footer__top__items");
+    const listaContacto = footer.querySelector(".footer__top__info-list");
+    const contacto = listaContacto
+      ? listaContacto.closest(".footer__top__item")
+      : null;
+
+    if (!columnas || !contacto) return;
+
+    /* Marca y descripción */
+    const marca = document.createElement("div");
+    marca.className = "footer__top__item";
+
+    marca.innerHTML = `
+      <p class="sabo-footer-marca">SABÓ</p>
+      <p class="sabo-footer-rubro">HOGAR &amp; DECO</p>
+      <p class="sabo-footer-descripcion">
+        Productos prácticos y con diseño para tu casa.<br>
+        Envíos a todo el país y retiro en Villa Martelli.
+      </p>
+    `;
+
+    /* Categorías */
+    const categorias = document.createElement("div");
+    categorias.className = "footer__top__item";
+
+    const titulo = document.createElement("h5");
+    titulo.className = "footer__top__title";
+    titulo.textContent = "Categorías";
+
+    const lista = document.createElement("ul");
+    lista.className = "sabo-footer-categorias";
+
+    const enlaces = document.querySelectorAll(
+      ".block-categories-carrousel__link"
+    );
+    const agregados = new Set();
+
+    enlaces.forEach(function (original) {
+      if (agregados.has(original.href)) return;
+      agregados.add(original.href);
+
+      const item = document.createElement("li");
+      const enlace = document.createElement("a");
+      enlace.href = original.href;
+      enlace.textContent = original.textContent.trim();
+
+      if (enlace.textContent.toUpperCase() === "NAVIDAD") {
+        enlace.textContent = "Navidad";
+      }
+
+      item.appendChild(enlace);
+      lista.appendChild(item);
+    });
+
+    categorias.appendChild(titulo);
+    categorias.appendChild(lista);
+
+    /* Reemplazar las columnas visuales anteriores */
+    Array.from(columnas.children).forEach(function (columna) {
+      if (columna !== contacto) {
+        columna.classList.add("sabo-footer-oculto");
+      }
+    });
+
+    columnas.insertBefore(marca, columnas.firstChild);
+
+    if (lista.children.length) {
+      columnas.insertBefore(categorias, contacto);
+    }
+
+    /* Mantener los enlaces originales de contacto */
+    const ubicacion = document.createElement("li");
+    ubicacion.className = "footer__top__info-item";
+    ubicacion.textContent = "Villa Martelli, Buenos Aires";
+
+    const arrepentimiento = listaContacto.querySelector(
+      ".footer__top__info-item--underline"
+    );
+
+    listaContacto.insertBefore(ubicacion, arrepentimiento);
+
+    footer.classList.add("sabo-footer");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", prepararFooter);
+  } else {
+    prepararFooter();
+  }
+})();
+</script>
