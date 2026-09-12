@@ -1,3 +1,557 @@
-<script>
+<style>
+.block-categories-carrousel,
+.block-categories-carrousel * {
+  box-sizing: border-box;
+}
 
+/* Sección */
+.block-categories-carrousel {
+  background: #F7F2EA !important;
+  padding: 44px 16px !important;
+}
+
+.block-categories-carrousel__container {
+  width: 100% !important;
+  max-width: 1600px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Título */
+.block-categories-carrousel__heading {
+  margin: 0 0 30px !important;
+  text-align: center !important;
+}
+
+.block-categories-carrousel__title {
+  margin: 0 !important;
+  color: #3D332B !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(32px, 3vw, 16px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  text-transform: none !important;
+}
+
+/* Línea debajo del título */
+.block-categories-carrousel__heading::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 18px auto 0;
+  background: #6A2533;
+  border-radius: 10px;
+}
+
+/* Grilla: dos columnas en celular */
+.block-categories-carrousel__wrapper {
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.block-categories-carrousel__list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  transform: none !important;
+}
+
+.block-categories-carrousel__list-item {
+  display: block !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Botones bordó con texto centrado */
+.block-categories-carrousel
+a.block-categories-carrousel__link {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 140px !important;
+  aspect-ratio: auto !important;
+  margin: 0 !important;
+  padding: 24px 12px !important;
+
+  background: #6A2533 !important;
+  border: 1px solid #6A2533 !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+
+  color: #FBF9F4 !important;
+  -webkit-text-fill-color: #FBF9F4 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(14px, 2.5vw, 18px) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.3px !important;
+
+  text-align: center !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-wrap: balance;
+
+  touch-action: manipulation;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Sin íconos */
+.block-categories-carrousel
+a.block-categories-carrousel__link::before,
+.block-categories-carrousel
+a.block-categories-carrousel__link::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Animación al pasar el mouse */
+@media (hover: hover) {
+  .block-categories-carrousel
+  a.block-categories-carrousel__link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(106, 37, 51, 0.2) !important;
+  }
+}
+</style>
+
+
+
+
+<style>
+.block-products-feed,
+.block-products-feed * {
+  box-sizing: border-box;
+}
+
+.block-products-feed {
+  background: #F7F2EA !important;
+  padding: 36px 16px !important;
+}
+
+.block-products-feed__container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Encabezado */
+.block-products-feed .block-products-feed__heading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 0 26px !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.sabo-productos-textos {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.block-products-feed .block-products-feed__title {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #3D332B !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(26px, 3vw, 36px) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.5px !important;
+  text-align: left !important;
+  text-transform: none !important;
+}
+
+.block-products-feed .block-products-feed__title::before,
+.block-products-feed .block-products-feed__title::after,
+.block-products-feed .block-products-feed__heading::after {
+  content: none !important;
+  display: none !important;
+}
+
+.block-products-feed .sabo-productos-subtitulo {
+  margin: 8px 0 0 !important;
+  color: #7B6E63 !important;
+  font: 400 13px/1.5 Georgia, serif !important;
+  text-align: left !important;
+}
+
+.block-products-feed a.sabo-productos-ver {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 20px;
+  background: #FFFFFF !important;
+  border: 1px solid #E5E0DA !important;
+  border-radius: 999px !important;
+  color: #3D332B !important;
+  -webkit-text-fill-color: #3D332B !important;
+  font: 600 13px/1.3 Georgia, serif !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+/* Dos productos por fila en celular */
+.block-products-feed .block-products-feed__products {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px 12px;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.block-products-feed__products::before,
+.block-products-feed__products::after {
+  content: none !important;
+  display: none !important;
+}
+
+.block-products-feed .block-products-feed__product {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Tarjetas */
+.block-products-feed__product-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #FFFFFF !important;
+  border: 1px solid #EEE8E1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Imágenes */
+.block-products-feed .block-products-feed__product-media {
+  position: relative;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.block-products-feed .product-preview-carrousel,
+.block-products-feed .product-preview-carrousel__items,
+.block-products-feed .product-preview-carrousel__item,
+.block-products-feed .block-products-feed__product-link {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.block-products-feed .block-products-feed__product-link {
+  display: block !important;
+}
+
+.block-products-feed img.block-products-feed__product-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Información */
+.block-products-feed__product-wrapper > .uk-flex {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  flex: 1;
+  margin: 0 !important;
+  padding: 14px 12px;
+}
+
+.block-products-feed__product-info {
+  text-align: left !important;
+}
+
+.block-products-feed .block-products-feed__product-name {
+  min-height: 3.9em;
+  margin: 0 0 8px !important;
+  font: 400 14px/1.3 Georgia, serif !important;
+  text-align: left !important;
+  text-transform: none !important;
+}
+
+.block-products-feed__product-name a {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  color: #3D332B !important;
+  text-decoration: none !important;
+}
+
+/* Precios */
+.block-products-feed .block-products-feed__product-price {
+  display: flex !important;
+  align-items: baseline;
+  justify-content: flex-start !important;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0 0 6px !important;
+  color: #3D332B !important;
+  font: 700 18px/1.3 Georgia, serif !important;
+}
+
+.block-products-feed__product-price del {
+  color: #8A7D72 !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.block-products-feed .block-products-feed__product-tranfer-discount {
+  margin: 0 0 12px !important;
+  color: #88364B !important;
+  font: 400 12px/1.4 Georgia, serif !important;
+}
+
+/* Comprar */
+.block-products-feed .block-products-feed__product-buttons {
+  display: block !important;
+  position: static !important;
+  width: 100%;
+  margin-top: auto !important;
+  padding-top: 6px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.block-products-feed a.block-products-feed__product-buttons-buy {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #3D332B !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  font: 600 14px/1.2 Georgia, serif !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Categoría sobre la foto */
+.sabo-producto-categoria {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  z-index: 3;
+  max-width: 65%;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #FBF9F4;
+  color: #5E544C;
+  font: 500 10px/1.3 Arial, sans-serif;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Descuento sobre la foto */
+.block-products-feed .block-products-feed__product-offer {
+  position: absolute !important;
+  top: 10px !important;
+  left: 8px !important;
+  right: auto !important;
+  z-index: 4;
+  padding: 5px 8px !important;
+  background: #6A2533 !important;
+  color: #FFFFFF !important;
+  border-radius: 999px !important;
+  font: 700 10px/1.3 Arial, sans-serif !important;
+}
+
+/* El enlace general pasa al encabezado */
+.block-products-feed.sabo-productos-listo
+.block-products-feed__actions {
+  display: none !important;
+}
+
+.block-products-feed__actions {
+  grid-column: 1 / -1;
+  width: 100% !important;
+}
+
+.block-products-feed a:focus-visible {
+  outline: 3px solid #88364B;
+  outline-offset: 3px;
+}
+
+/* Cuatro productos por fila en tablet y computadora */
+@media (min-width: 768px) {
+  .block-products-feed {
+    padding: 48px 24px !important;
+  }
+
+  .block-products-feed .block-products-feed__products {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 22px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .block-products-feed .block-products-feed__product-name {
+    font-size: 15px !important;
+  }
+}
+</style>
+<style>
+@media (min-width: 768px) {
+  .block-products-feed .block-products-feed__product-buttons {
+    display: flex !important;
+    justify-content: center !important;
+    align-self: stretch !important;
+    width: 100% !important;
+    margin: auto 0 0 !important;
+    padding: 6px 0 0 !important;
+  }
+
+  .block-products-feed a.block-products-feed__product-buttons-buy {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+  }
+}
+</style>
+<script>
+(function () {
+  function prepararProductos() {
+    const categorias = {
+      "mundial-camisetas": "Mundial - Camisetas",
+      "hogar-y-deco": "Hogar y Deco",
+      "cocina": "Cocina",
+      "organizadores": "Organizadores",
+      "bano": "Baño",
+      "navidad": "Navidad"
+    };
+
+    document.querySelectorAll(".block-products-feed").forEach(function (seccion) {
+      const encabezado = seccion.querySelector(".block-products-feed__heading");
+      const titulo = seccion.querySelector(".block-products-feed__title");
+
+      if (encabezado && titulo) {
+        titulo.textContent = "Productos destacados";
+
+        let textos = encabezado.querySelector(".sabo-productos-textos");
+
+        if (!textos) {
+          const padre = titulo.parentElement;
+
+          if (padre !== encabezado && padre.tagName === "DIV") {
+            textos = padre;
+            textos.classList.add("sabo-productos-textos");
+          } else {
+            textos = document.createElement("div");
+            textos.className = "sabo-productos-textos";
+            encabezado.insertBefore(textos, titulo);
+            textos.appendChild(titulo);
+          }
+        }
+
+        let subtitulo = encabezado.querySelector(".sabo-productos-subtitulo");
+
+        if (!subtitulo) {
+          subtitulo = document.createElement("p");
+          subtitulo.className = "sabo-productos-subtitulo";
+        }
+
+        subtitulo.textContent =
+          "Productos para tu hogar, con precio especial por transferencia";
+        textos.appendChild(subtitulo);
+
+        let enlace = encabezado.querySelector(".sabo-productos-ver");
+
+        if (!enlace) {
+          enlace = document.createElement("a");
+          enlace.className = "sabo-productos-ver";
+          encabezado.appendChild(enlace);
+        }
+
+        enlace.href = "https://sabosmart.com.ar/productos";
+        enlace.textContent = "Ver todos los productos";
+
+        seccion.classList.add("sabo-productos-listo");
+      }
+
+      seccion.querySelectorAll(".block-products-feed__product").forEach(function (tarjeta) {
+        const imagen = tarjeta.querySelector(".block-products-feed__product-media");
+        const enlace = tarjeta.querySelector(".block-products-feed__product-link");
+
+        if (!imagen || !enlace) return;
+
+        const ruta = new URL(enlace.href, location.href)
+          .pathname.split("/").filter(Boolean);
+        const categoria = categorias[ruta[0]];
+
+        if (!categoria) return;
+
+        let etiqueta = imagen.querySelector(".sabo-producto-categoria");
+
+        if (!etiqueta) {
+          etiqueta = document.createElement("span");
+          etiqueta.className = "sabo-producto-categoria";
+          imagen.appendChild(etiqueta);
+        }
+
+        etiqueta.textContent = categoria;
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", prepararProductos);
+  } else {
+    prepararProductos();
+  }
+})();
 </script>
